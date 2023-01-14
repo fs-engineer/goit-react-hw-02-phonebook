@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Form, NameInput, PhoneInput, SubmitButton } from './SearchForm.styled';
+import { Form, NameInput, PhoneInput } from './SearchForm.styled';
+import Button from '../Buttons/Button';
 
 export default class SearchForm extends Component {
   state = {
@@ -35,7 +36,7 @@ export default class SearchForm extends Component {
           onChange={this.onChangeInput}
           required
         />
-        <SubmitButton type="submit">Save contact</SubmitButton>
+        <Button type="submit" text="Save contact" />
       </Form>
     );
   }

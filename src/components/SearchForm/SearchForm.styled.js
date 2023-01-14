@@ -11,12 +11,6 @@ export const NameInput = styled.input`
   border: 1px solid blue;
 `;
 
-export const SubmitButton = styled.button`
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid blue;
-`;
-
 export const PhoneInput = styled.input`
   padding: 5px;
   margin-right: 15px;

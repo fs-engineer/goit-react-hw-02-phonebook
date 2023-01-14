@@ -1,9 +1,10 @@
 import { Component } from 'react';
-import { List, ListItem } from './ContactsList.styled';
+import Button from '../Buttons/Button';
+import { List, ListItem, ItemText } from './ContactsList.styled';
 
 export default class ContactsList extends Component {
   render() {
-    const { filteredContactsByName } = this.props;
+    const { filteredContactsByName, deleteContact } = this.props;
 
     return (
       <List>
@@ -11,9 +12,14 @@ export default class ContactsList extends Component {
           filteredContactsByName.length > 0 &&
           filteredContactsByName.map(({ name, number, id }) => (
             <ListItem key={id}>
-              <p>
+              <ItemText>
                 {name}: <span>{number}</span>
-              </p>
+              </ItemText>
+              <Button
+                text="Delete"
+                onClick={e => deleteContact(e.target.dataset.id)}
+                id={id}
+              />
             </ListItem>
           ))}
       </List>

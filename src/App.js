@@ -1,5 +1,7 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   Section,
   SearchForm,
@@ -17,9 +19,22 @@ class App extends Component {
 
   addContact = e => {
     e.preventDefault();
+    const { contacts } = this.state;
+    const name = e.target.name.value;
+    const isExists = contacts.find(
+      contact => contact.name.toLowerCase() === name.toLowerCase(),
+    );
+
+    if (isExists) {
+      toast.error(`Contact ${name} is already exists`);
+      return;
+    }
+
+    const number = e.target.number.value;
+
     const newContact = {
-      name: e.target.name.value,
-      number: e.target.number.value,
+      name,
+      number,
       id: nanoid(),
     };
 
@@ -27,7 +42,14 @@ class App extends Component {
       contacts: [...prevState.contacts, newContact],
     }));
 
-    this.reset();
+    toast.info(`Contact ${name} added`);
+  };
+
+  deleteContact = id => {
+    const { contacts } = this.state;
+    const updatedContacts = contacts.filter(contact => contact.id !== id);
+
+    this.setState(prevState => ({ contacts: updatedContacts }));
   };
 
   onChangeInput = e => {
@@ -42,10 +64,6 @@ class App extends Component {
     );
   };
 
-  reset = () => {
-    this.setState({ name: '', number: '' });
-  };
-
   render() {
     const { filter } = this.state;
     const filteredContactsByName = this.filterByName();
@@ -56,8 +74,12 @@ class App extends Component {
           <SearchForm addContact={this.addContact} />
           <Title title="Contacts" />
           <FilterByName onChange={this.onChangeInput} filter={filter} />
-          <ContactsList filteredContactsByName={filteredContactsByName} />
+          <ContactsList
+            filteredContactsByName={filteredContactsByName}
+            deleteContact={this.deleteContact}
+          />
         </Section>
+        <ToastContainer position="top-right" />
       </>
     );
   }
