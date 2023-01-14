@@ -1,16 +1,14 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
-import { Section } from './components/Section/Section';
-import SearchForm from './components/SearchForm/SearchForm';
-import { ContactsList } from './components/ContactsList/ContactsList';
-import { FilterByName } from './components/FilterByName/FilterByName';
+import {
+  Section,
+  SearchForm,
+  ContactsList,
+  FilterByName,
+  Title,
+} from './components';
+import { CONTACTS_DATA } from './essets/contactsData';
 
-const CONTACTS_DATA = [
-  { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-  { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-  { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-  { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-];
 class App extends Component {
   state = {
     contacts: CONTACTS_DATA,
@@ -56,7 +54,7 @@ class App extends Component {
       <>
         <Section title="Phonebook">
           <SearchForm addContact={this.addContact} />
-
+          <Title title="Contacts" />
           <FilterByName onChange={this.onChangeInput} filter={filter} />
           <ContactsList filteredContactsByName={filteredContactsByName} />
         </Section>

@@ -1,7 +1,7 @@
-import { Component } from "react";
-import { SectionWrapper } from "./Section.styled";
+import { Component } from 'react';
+import { SectionWrapper } from './Section.styled';
 
-export class Section extends Component {
+export default class Section extends Component {
   render() {
     const { children, title } = this.props;
 

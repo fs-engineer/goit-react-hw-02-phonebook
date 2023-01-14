@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Filter } from './FilterByName.styled';
 
-export class FilterByName extends Component {
+export default class FilterByName extends Component {
   render() {
     const { filter, onChange } = this.props;
 
@@ -10,5 +10,3 @@ export class FilterByName extends Component {
     );
   }
 }
-
-export default FilterByName;

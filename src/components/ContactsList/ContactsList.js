@@ -1,7 +1,7 @@
 import { Component } from 'react';
-import { List, ListItem } from './ContactList.styled';
+import { List, ListItem } from './ContactsList.styled';
 
-export class ContactsList extends Component {
+export default class ContactsList extends Component {
   render() {
     const { filteredContactsByName } = this.props;
 
