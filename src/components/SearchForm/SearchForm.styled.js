@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const Form = styled.form`
-  padding: 10px;
+  padding: 10px 10px 10px 0;
 `;
 
 export const NameInput = styled.input`

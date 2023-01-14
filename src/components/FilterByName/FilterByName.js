@@ -1,16 +1,14 @@
-import styled from '@emotion/styled';
+import React, { Component } from 'react';
+import { Filter } from './FilterByName.styled';
 
-export const FilterByName = styled(Filter)`
-  padding: 5px;
-  margin-right: 15px;
-  border-radius: 5px;
-  border: 1px solid blue;
-`;
+export class FilterByName extends Component {
+  render() {
+    const { filter, onChange } = this.props;
 
-function Filter(props) {
-  const { filter, onChangeFilter } = props;
-
-  return (
-    <input onChange={onChangeFilter} type="text" name="filter" value={filter} />
-  );
+    return (
+      <Filter onChange={onChange} type="text" name="filter" value={filter} />
+    );
+  }
 }
+
+export default FilterByName;
