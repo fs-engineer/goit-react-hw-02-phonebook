@@ -46,10 +46,9 @@ class App extends Component {
   };
 
   deleteContact = id => {
-    const { contacts } = this.state;
-    const updatedContacts = contacts.filter(contact => contact.id !== id);
-
-    this.setState(prevState => ({ contacts: updatedContacts }));
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== id),
+    }));
   };
 
   onChangeInput = e => {
